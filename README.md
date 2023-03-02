@@ -1,153 +1,70 @@
-<div style="text-align:center;background-color:#e0ffff;">
-    <p style="font-family:Times New Roman;font-size:60px" > <b>CSE167HW3-Extra-Credit</b></p>
-    <p style="color:blue;font-style:italic;font-size:20px"> 3D Modeling Program</p> 
-</div>
+# CSE167HW3-Extra-Credit: 3D Modeling Program
 
 > This page only serves as a guide to my program. No code will be posted here. Please go to canvas for the code.
 
 
-# Snippet1
+# Step1: Run the code
 
-> This is the [link to Snippet1.md (raw text)](https://raw.githubusercontent.com/yug030/cse15l_lab_report_4/main/Snippet1.md):
+> This program will run on Windows computers.
+> 1. Open the `.sln` file in the folder
+> 2. Click the green arrow on the top of Visual Studio (Start Without Debugging)
 
-> Here is the test code:
+# Step2: Basic interaction
 
-
-```java
-    @Test
-    public void testSnippet1() throws IOException{
-        Path fileName = Path.of("Snippet1.md");
-	    String contents = Files.readString(fileName);
-        List<String> expected = List.of("`google.com", "google.com", "ucsd.edu");
-        assertEquals(expected, OurMarkdownParse.getLinks(contents));
-    }
-```
-## The Implementation I Reviewed:
-
-> It does not pass and the Junit output is shown below:
-
-<img src="reviewed-failure-1.png">
-
-> Expected output: ```[`google.com, google.com, ucsd.edu]```
-
-> Actual output: ```[url.com, `google.com, google.com, ucsd.edu]```
-
-## My Implementation:
-
-> It does not pass and the Junit output is shown below:
-
-<img src="own-failure-1.png">
-
-> Expected output: ```[`google.com, google.com, ucsd.edu]```
+> At this moment, there should be 2 windows on your screen: `Curve Window` on the left and `Model Viewer` on the right.
 
 
-> Actual output: ```[url.com, `google.com, google.com, ucsd.edu]```
+<img src="start1.png">
 
-In my implementation, a small change can be made to address the problem created by backticks. We can see from the expected output that none of the left bracket `[` and the right bracket `]` inside two backsticks will be counted as valid pattern for links. Therefore, we can keep track of the text is inside backticks and only look for `[` and `]` outside the backticks.
+> The left window should have one vertical white line with 2 points on it. The point in the middle (call it M) is the origin for our coordinate frame, and when combined with the other point (call it P) shows a length of 0.1.
+> In short, the vector `MP` is has an absolute length of 0.1.
 
-# Snippet2
+> Our coordinate frame is shown below in pink:
 
-> This is the [link to Snippet2.md (raw text)](https://raw.githubusercontent.com/yug030/cse15l_lab_report_4/main/Snippet2.md):
+<img src="1.jpg">
 
-> Here is the test code:
+> The curve we draw will be rotated around the blue line (axis) and the vertices coordinates will be recorded in the pink frame.
 
+# Step 3: Change Axis
 
-```java
-    @Test
-    public void testSnippet2() throws IOException{
-        Path fileName = Path.of("Snippet2.md");
-	    String contents = Files.readString(fileName);
-        List<String> expected = List.of("a.com", "a.com(())", "example.com");
-        assertEquals(expected, OurMarkdownParse.getLinks(contents));
-    }
-```
-## The Implementation I Reviewed:
+> Don't forget the exe window. It have a lot of helpful info, but never type into this shell. Always type into `Curve Window` or `Model Viewer`.
 
-> It does not pass and the Junit output is shown below:
+<img src="start2_exewindow.png">
 
-<img src="reviewed-failure-2.png">
+> My program allow users to change the rotation axis. The axis angle is defined to be the acute angle between the axis and the horizontal line. To change, go to `Curve Window`, press 'a', and enter a number between 0-90. Press 'f' to save.
 
-> Expected output: ```[a.com, a.com(()), example.com]```
+<img src="start3_changeAxis.png">
 
-> Actual output: ```[a.com, a.com((, example.com]```
+> For example, type "a32f" will change the rotation angle to 32 degrees. See image above.
 
-## My Implementation:
+<img src="start3_changeAxis2.png">
 
-> It does not pass and the Junit output is shown below:
+> However if the number you typed is too big, it will reset your input in the middle. For example, typing "a322f" will set the angle to 2 degrees, as the program will clear the input when the second 2 is entered. See image above.
 
-<img src="own-failure-2.png">
+> It's highly recommended to change the axis first, before you start drawing points (though it will still work if you first draw something, then change the axis).
 
-> Expected output: ```[a.com, a.com(()), example.com]```
+# Step 4: Change size
 
-> Actual output: ```[a.com, a.com((, example.com]```
+> You can use 's' to make your model smaller. The unit (0.1) length will therefore be longer. You can also use 'b' to make the model bigger and the unit length shorter on screen. Pressing 's' multiple times can allow you to change unit (0.1) vector direction, moving Point P to the other side of Point M. Here P is moved to the right side of M after ~20 presses (see the shell outputs)
 
-In my implementation, a small change can be made to address the problem created by nest parentheses, brackets, and escaped brackets. After we find matched `[` `]` and subsequent `(`, we can add a stack to find the matched right parenthese `)` without the interference of nest parentheses inside the potential link.
+<img src="start3_big.png">
 
-# Snippet3
+# Step 5: Draw and generate
 
-> This is the [link to Snippet3.md (raw text)](https://raw.githubusercontent.com/yug030/cse15l_lab_report_4/main/Snippet3.md):
+> It's basically the same commands as HW3. Use 0/1/2 to draw straight lines/bezier/bspline curves. Left click to add, right click to remove, drag to move.
 
-> Here is the test code:
+> When you are finished, press 'g' to generate. You can find the file generated here. Filename is "my3DModel.obj".
 
+<img src="start3_file.png">
 
-```java
-    @Test
-    public void testSnippet3() throws IOException{
-        Path fileName = Path.of("Snippet3.md");
-	    String contents = Files.readString(fileName);
-        List<String> expected = List.of("https://ucsd-cse15l-w22.github.io/");
-        assertEquals(expected, OurMarkdownParse.getLinks(contents));
-    }
-```
-## The Implementation I Reviewed:
+> Unfortunately the `Model Viewer` will not update right now. It will update when you close the program with `q` and relaunch it.
 
-> It does not pass and the Junit output is shown below:
+# Step 6: Viewing
 
-<img src="reviewed-failure-3.png">
+> It's basically the same commands as HW2. Please press 'h' on `Model Viewer` window for more information.
 
-> Expected output: ```[https://ucsd-cse15l-w22.github.io/]```
+# Normal Calculation:
 
-> Actual output: 
+<img src="2.jpg">
 
-```
-[
-    https://www.twitter.com
-,
-    https://ucsd-cse15l-w22.github.io/
-, github.com
-
-And there's still some more text after that.
-
-[this link doesn't have a closing parenthesis for a while](https://cse.ucsd.edu/
-
-
-
-]
-```
-
-## My Implementation:
-
-> It does not pass and the Junit output is shown below:
-
-<img src="own-failure-3.png">
-
-> Expected output: ```[https://ucsd-cse15l-w22.github.io/]```
-
-> Actual output: ```[]```
-
-In my implementation, a small change can be made to address the problem created by newlines in brackets and parentheses. After we find matched `[` `]` and subsequent matched `(` and `)`, we can change the way we view links: the blank spaces and **single** newlines immediately after `(` and just before `)` can be ignored. So long as the middle part does not contain spaces and newlines, and the text part inside the brackets `[]` does not contains **any empty lines**, it can be viewed as a valid link.
-
-> A valid link example:
-```
-[Single newlines: valid link](          # a single tap of "Enter" here
-     ucsd.edu                           # single tap of "Enter"
-     )
-```
-
-> An invalid link example:
-```
-[Empty lines: invalid link]( 
-                                        # here's an "empty" line
-     ucsd.edu 
-     )
-```
+# Have fun exploring!
