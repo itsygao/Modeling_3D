@@ -1,7 +1,16 @@
-# CSE167HW3-Extra-Credit: 3D Modeling Program
+# Simple 3D Modeling Program
 
-> This page only serves as a guide to my program. No code will be posted here. Please go to canvas for the code.
+> Gourd shape (Bezier Mode):
 
+<img src="imgsrc/gourd_draw.png" height="360">
+<img src="imgsrc/gourd_model.png" height="360">
+
+> Plate shape (Bspline Mode):
+
+<img src="imgsrc/plate_draw.png" height="356">
+<img src="imgsrc/plate_model.png" height="356">
+
+> With this simple 3D Modeling program, you can easily create `.obj` files by customizing curves and rotation axis. Let's see how this works!
 
 # Step1: Run the code
 
@@ -14,14 +23,14 @@
 > At this moment, there should be 2 windows on your screen: `Curve Window` on the left and `Model Viewer` on the right.
 
 
-<img src="start1.png">
+<img src="imgsrc/start1.png">
 
 > The left window should have one vertical white line with 2 points on it. The point in the middle (call it M) is the origin for our coordinate frame, and when combined with the other point (call it P) shows a length of 0.1.
 > In short, the vector `MP` is has an absolute length of 0.1.
 
 > Our coordinate frame is shown below in pink:
 
-<img src="1.jpg">
+<img src="imgsrc/axis.jpg">
 
 > The curve we draw will be rotated around the blue line (axis) and the vertices coordinates will be recorded in the pink frame.
 
@@ -29,15 +38,15 @@
 
 > Don't forget the exe window. It have a lot of helpful info, but never type into this shell. Always type into `Curve Window` or `Model Viewer`.
 
-<img src="start2_exewindow.png">
+<img src="imgsrc/start2_exewindow.png">
 
 > My program allow users to change the rotation axis. The axis angle is defined to be the acute angle between the axis and the horizontal line. To change, go to `Curve Window`, press 'a', and enter a number between 0-90. Press 'f' to save.
 
-<img src="start3_changeAxis.png">
+<img src="imgsrc/start3_changeAxis.png">
 
 > For example, type "a32f" will change the rotation angle to 32 degrees. See image above.
 
-<img src="start3_changeAxis2.png">
+<img src="imgsrc/start3_changeAxis2.png">
 
 > However if the number you typed is too big, it will reset your input in the middle. For example, typing "a322f" will set the angle to 2 degrees, as the program will clear the input when the second 2 is entered. See image above.
 
@@ -47,7 +56,7 @@
 
 > You can use 's' to make your model smaller. The unit (0.1) length will therefore be longer. You can also use 'b' to make the model bigger and the unit length shorter on screen. Pressing 's' multiple times can allow you to change unit (0.1) vector direction, moving Point P to the other side of Point M. Here P is moved to the right side of M after ~20 presses (see the shell outputs)
 
-<img src="start3_big.png">
+<img src="imgsrc/start3_big.png">
 
 # Step 5: Draw and generate
 
@@ -55,7 +64,7 @@
 
 > When you are finished, press 'g' to generate. You can find the file generated here. Filename is "my3DModel.obj".
 
-<img src="start3_file.png">
+<img src="imgsrc/start3_file.png">
 
 > Unfortunately the `Model Viewer` will not update right now. It will update when you close the program with `q` and relaunch it.
 
@@ -65,6 +74,8 @@
 
 # Normal Calculation:
 
-<img src="2.jpg">
+<img src="imgsrc/normal_calc.jpg">
 
 # Have fun exploring!
+
+> #to comply with UCSD academic intergrity rules, no code will be posted publicly.
