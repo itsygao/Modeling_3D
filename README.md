@@ -2,13 +2,15 @@
 
 > Gourd shape (Bezier Mode):
 
-<img src="imgsrc/gourd_draw.png" height="360">
-<img src="imgsrc/gourd_model.png" height="360">
+Drawing             |  Model
+:-------------------------:|:-------------------------:
+<img src="imgsrc/gourd_draw.png" height="360">  |  <img src="imgsrc/gourd_model.png" height="360">
 
 > Plate shape (Bspline Mode):
 
-<img src="imgsrc/plate_draw.png" height="356">
-<img src="imgsrc/plate_model.png" height="356">
+Drawing             |  Model
+:-------------------------:|:-------------------------:
+<img src="imgsrc/plate_draw.png" height="356">  |  <img src="imgsrc/plate_model.png" height="356">
 
 > With this simple 3D Modeling program, you can easily create `.obj` files by customizing curves and rotation axis. Let's see how this works!
 
